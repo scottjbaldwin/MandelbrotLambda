@@ -30,15 +30,32 @@ namespace Fractal
         public APIGatewayProxyResponse Get(APIGatewayProxyRequest request, ILambdaContext context)
         {
             context.Logger.LogLine("Get Request\n");
+            var iterations = Convert.ToInt32(request.QueryStringParameters["iterations"]);
+            var bottomLeftX = Convert.ToDouble(request.QueryStringParameters["bottomleftx"]);
+            var bottomLeftY = Convert.ToDouble(request.QueryStringParameters["bottomlefty"]);
+            var topRightX = Convert.ToDouble(request.QueryStringParameters["toprightx"]);
+            var topRightY = Convert.ToDouble(request.QueryStringParameters["toprighty"]);
+            var stepX = Convert.ToInt32(request.QueryStringParameters["stepx"]);
+            var stepY = Convert.ToInt32(request.QueryStringParameters["stepy"]);
+            
+            var result = Mandelbrot.CalculateArea(
+                iterations,
+                bottomLeftX,
+                bottomLeftY,
+                topRightX,
+                topRightY,
+                stepX,
+                stepY);
 
             var response = new APIGatewayProxyResponse
             {
                 StatusCode = (int)HttpStatusCode.OK,
-                Body = "Hello AWS Serverless",
-                Headers = new Dictionary<string, string> { { "Content-Type", "text/plain" } }
+                Body = $"{{\"result\": {result.ToJsonMatrix()} }}",
+                Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
             };
 
             return response;
         }
+
     }
 }
