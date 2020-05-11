@@ -57,4 +57,8 @@ def lambda_handler(event, context):
     stepX = int(params['stepX'])
     stepY = int(params['stepY'])
 
-    return json.dumps(calculate_area(iterations, bottomLeftX, bottomLeftY, topRightX, topRightY, stepX, stepY))
+    area = calculate_area(iterations, bottomLeftX, bottomLeftY, topRightX, topRightY, stepX, stepY)
+    return {
+        "statusCode": 200,
+        "body": json.dumps(area)
+    }
