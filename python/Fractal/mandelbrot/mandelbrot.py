@@ -33,7 +33,7 @@ def calculate_area(iterations: int, bottomLeftX: float, bottomLeftY: float, topR
     """
 
     xStepSize = (topRightX - bottomLeftX)/stepX
-    yStepSize = (bottomLeftY - topRightY)/stepY
+    yStepSize = (topRightY - bottomLeftY)/stepY
     xPoints = [bottomLeftX + xStepSize*s for s in range(0, stepX)]
     yPoints = [bottomLeftY + yStepSize*s for s in range(0, stepY)]
 
