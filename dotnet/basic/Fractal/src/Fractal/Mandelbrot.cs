@@ -36,13 +36,13 @@ namespace Fractal
             int stepY)
         {
             var result = new List<List<int>>(stepX);
-            var xSteps = new List<double>(GetSteps(bottomLeftX, stepX, (topRightX - bottomLeftX)/stepX));
-            var ySteps = new List<double>(GetSteps(bottomLeftY, stepY, (topRightY - bottomLeftY)/stepY));
-            foreach(var x in xSteps)
+            var stepXSize = (topRightX - bottomLeftX)/stepX;
+            var stepYSize = (topRightY - bottomLeftY)/stepY;
+            foreach(var x in GetSteps(bottomLeftX, stepX, stepXSize))
             {
                 var row = new List<int>(stepY);
                 result.Add(row);
-                foreach(var y in ySteps)
+                foreach(var y in GetSteps(bottomLeftY, stepY, stepYSize))
                 {
                     row.Add(CalculatePoint(iteratoins, x, y));
                 }
