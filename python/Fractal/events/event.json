@@ -5,7 +5,13 @@
   "httpMethod": "POST",
   "isBase64Encoded": false,
   "queryStringParameters": {
-    "foo": "blah blah blah"
+    "iterations": "1000",
+    "bottomLeftX": "0.0",
+    "bottomLeftY": "0.0",
+    "topRightX": "1.0",
+    "topRightY": "1.0",
+    "stepX": "100",
+    "stepY": "100"
   },
   "pathParameters": {
     "proxy": "/path/to/resource"

@@ -1,4 +1,7 @@
 import math
+import json
+
+# import requests
 
 ROOT_FIVE = math.sqrt(5)
 
@@ -43,3 +46,15 @@ def calculate_area(iterations: int, bottomLeftX: float, bottomLeftY: float, topR
             row.append(calculate_point(iterations, x, y))
 
     return points
+
+def lambda_handler(event, context):
+    params = event['queryStringParameters']
+    iterations = int(params['iterations'])
+    bottomLeftX = float(params['bottomLeftX'])
+    bottomLeftY = float(params['bottomLeftY'])
+    topRightX = float(params['topRightX'])
+    topRightY = float(params['topRightY'])
+    stepX = int(params['stepX'])
+    stepY = int(params['stepY'])
+
+    return json.dumps(calculate_area(iterations, bottomLeftX, bottomLeftY, topRightX, topRightY, stepX, stepY))
