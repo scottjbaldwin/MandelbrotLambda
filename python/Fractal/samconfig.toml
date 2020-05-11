@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "python-fractal"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-18cajnj8ynxzt"
+s3_prefix = "python-fractal"
+region = "ap-southeast-2"
+capabilities = "CAPABILITY_IAM"
+
