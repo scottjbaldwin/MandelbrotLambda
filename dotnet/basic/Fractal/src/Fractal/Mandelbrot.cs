@@ -10,12 +10,9 @@ namespace Fractal
         {
             double z1 = x;
             double z2 = y;
-            double result = 0;
             for (int i = 0; i < iterations; i++)
             {
-                result = Math.Sqrt(z1 * z1 + z2 * z2);
-
-                if (result > ROOT_5)
+                if (Math.Sqrt(z1 * z1 + z2 * z2) > ROOT_5)
                 {
                     return i;
                 }

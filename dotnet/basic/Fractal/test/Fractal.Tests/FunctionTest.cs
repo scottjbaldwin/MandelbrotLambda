@@ -45,20 +45,7 @@ namespace Fractal.Tests
             response = functions.Get(request, context);
             Assert.Equal(200, response.StatusCode);
             Assert.Equal("application/json", response.Headers["Content-Type"]);
-            Assert.True(response.Body.IndexOf("result") > 0);
-        }
-
-        [Fact]
-        public void CanTurnListOfIntsIntoJsonArray()
-        {
-            // Arrange
-            var intList = new List<int>{1, 2, 3};
-
-            // Act
-            var json = intList.ToJsonArray();
-
-            // Assert
-            Assert.Equal("[1,2,3]", json);
+            Assert.True(response.Body.IndexOf(",") > 0);
         }
 
         [Fact]

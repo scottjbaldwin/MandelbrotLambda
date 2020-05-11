@@ -49,8 +49,8 @@ namespace Fractal
 
             var response = new APIGatewayProxyResponse
             {
-                StatusCode = (int)HttpStatusCode.OK,
-                Body = $"{{\"result\": {result.ToJsonMatrix()} }}",
+                StatusCode = 200,
+                Body = $"{result.ToJsonMatrix()}",
                 Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
             };
 

@@ -1,19 +1,35 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Fractal
 {
     public static class ExtensionMethods
     {
-        public static string ToJsonArray(this List<int> list)
-        {
-            return $"[{String.Join(",", list.Select(i => i.ToString()))}]";
-        }
-
         public static string ToJsonMatrix(this List<List<int>> matrix)
         {
-            return $"[{String.Join(",", matrix.Select(m => m.ToJsonArray()))}]";
+            var sb = new StringBuilder("[");
+            var isFirst = true;
+
+            foreach(var row in matrix)
+            {
+                if (isFirst)
+                {
+                    isFirst = false;
+                }
+                else
+                {
+                    sb.Append(",");
+                }
+
+                sb.Append("[");
+                sb.AppendJoin(',', row);
+                sb.Append("]");
+            }
+            sb.Append("]");
+
+            return sb.ToString();
         }
 
     }
